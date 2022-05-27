@@ -1,9 +1,11 @@
-const EmptyState = () => {
+const Home = () => {
     return (
-      <div id="empty-state">
-        <img alt="" src="/logo192.png" />
+      <div className="landing">
+        <h1> Landing Page </h1>
+
+        <img alt="" src="/background.png" />
       </div>
     );
   };
   
-export default EmptyState;
+export default Home;

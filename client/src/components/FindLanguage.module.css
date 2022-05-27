@@ -1,0 +1,30 @@
+.container {
+  background-color: rgb(205, 159, 252);
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  color: rgb(16, 14, 18);
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+.textBox {
+  margin: auto;
+  width: 20%;
+  position: relative;
+}
+
+.button {
+  position: relative;
+  margin: auto;
+  width: 20%;
+  padding: 10px;
+}

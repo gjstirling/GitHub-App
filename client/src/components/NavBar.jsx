@@ -13,13 +13,16 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 
-const pages = [{name: "GitHub guess", route:"guess"}];
+const pages = [{ name: "GitHub guess", route: "guess" }];
 const settings = ["Logout"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const [user, setUser] = useUser();
 
   const username = "GS";
 
@@ -36,6 +39,11 @@ const ResponsiveAppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const logoutUser = () => {
+    setUser(null);
+    handleCloseUserMenu();
   };
 
   return (
@@ -58,7 +66,7 @@ const ResponsiveAppBar = () => {
               textDecoration: "none",
             }}
           >
-            App Name
+            Github Facts
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -91,10 +99,7 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem
-                  key={page.name}
-                  onClick={handleCloseNavMenu}
-                >
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
@@ -117,7 +122,7 @@ const ResponsiveAppBar = () => {
               textDecoration: "none",
             }}
           >
-            App Name
+            GitHub Facts
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -155,7 +160,7 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={logoutUser}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

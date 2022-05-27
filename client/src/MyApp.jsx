@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import EmptyState from "./components/Home";
 
-
-
 export function MyApp() {
 
     return (

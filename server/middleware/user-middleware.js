@@ -27,6 +27,6 @@ function validatePassword(password){
     return String(password )
       .toLowerCase()
       .match(
-        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,30}$/
       );
 }

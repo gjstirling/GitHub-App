@@ -5,7 +5,7 @@ const User = require("../models/user-model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-router.post("/user", validateUser, (req, res) => {
+router.post("/", validateUser, (req, res) => {
   const newUser = new User({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -24,13 +24,13 @@ router.post("/user", validateUser, (req, res) => {
   });
 });
 
-router.get("/user", (req, res) => {
+router.get("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   User.findOne({ email }).then((user) => {
     // Check if user exists
     if (!user) {
-      return res.status(404).json({ emailnotfound: "Email not found" });
+      return res.status(401).json({ error: "Email or password incorrect" });
     }
     // Check password
     bcrypt.compare(password, user.password).then((isMatch) => {
@@ -46,7 +46,7 @@ router.get("/user", (req, res) => {
           payload,
           "secret",
           {
-            expiresIn: 31556926, // 1 year in seconds
+            expiresIn: 86400, // 1 day in seconds
           },
           (err, token) => {
             res.json({
@@ -57,8 +57,8 @@ router.get("/user", (req, res) => {
         );
       } else {
         return res
-          .status(400)
-          .json({ passwordincorrect: "Password incorrect" });
+          .status(401)
+          .json({ error: "Email or password incorrect" });
       }
     });
   });

@@ -2,7 +2,7 @@
 
 ## Setup 
 
-To use this application you will need node v18.0.0 installed.
+To use this application you will need node v18.0.0 and react v18.1.0 installed.
 
 ## Usage 
 

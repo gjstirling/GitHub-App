@@ -3,6 +3,7 @@ import findFavouriteLanguage from "../services/findFavouriteLanguage";
 
 export const useSearchForm = () => {
   const [username, setUsername] = useState("");
+  const [result, setResult] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -11,11 +12,10 @@ export const useSearchForm = () => {
     }
     const result = await findFavouriteLanguage(username);
     if (result === undefined) {
+      setResult("")
       alert(`${username} is not a valid username`);
     }
-    alert(
-      `${username}'s favourite language is ${result[0]} \n they have ${result[1]} repositories in total`
-    );
+    setResult(`I would guess that ${username}'s favourite language is ${result[0]} \n as they have ${result[1]} repositories`)
   };
 
   const handleChange = (event) => {
@@ -23,5 +23,5 @@ export const useSearchForm = () => {
     setUsername(event.target.value.toLowerCase());
   };
 
-  return { handleSubmit, handleChange, username };
+  return { handleSubmit, handleChange, username, result };
 };

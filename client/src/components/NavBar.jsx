@@ -51,7 +51,7 @@ const ResponsiveAppBar = () => {
   console.log(username)
 
   return (
-    <AppBar position="static" style={{ background: "#A139E3" }}>
+    <AppBar position="static" style={{ background: (13, 13, 50) }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />

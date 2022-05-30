@@ -4,7 +4,7 @@ import { useSearchForm } from '../hooks/useSearchForm';
 
 const Search = () => {
 
-  const {username, handleSubmit, handleChange} = useSearchForm();
+  const {username, handleSubmit, handleChange, result} = useSearchForm();
 
   return (
     <div id="main" className={style.container}>
@@ -17,6 +17,7 @@ const Search = () => {
         className={style.textBox}
         onChange={handleChange}
       />
+      <br></br>
       <Button
         variant="contained"
         type="submit"
@@ -24,8 +25,9 @@ const Search = () => {
         className="button"
         onClick={handleSubmit}
       >
-        Click me
+        Make guess
       </Button>
+      <h3>{result}</h3>
     </div>
   );
 };

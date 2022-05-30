@@ -48,8 +48,6 @@ const ResponsiveAppBar = () => {
     handleCloseUserMenu();
   };
 
-  console.log(username)
-
   return (
     <AppBar position="static" style={{ background: (13, 13, 50) }}>
       <Container maxWidth="xl">

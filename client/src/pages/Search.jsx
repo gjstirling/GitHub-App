@@ -1,10 +1,9 @@
 import { Button, TextField } from "@mui/material";
 import style from "./Search.module.css";
-import { useSearchForm } from '../hooks/useSearchForm';
+import { useSearchForm } from "../hooks/useSearchForm";
 
 const Search = () => {
-
-  const {username, handleSubmit, handleChange, result} = useSearchForm();
+  const { username, handleSubmit, handleChange, result } = useSearchForm();
 
   return (
     <div id="main" className={style.container}>
@@ -19,9 +18,14 @@ const Search = () => {
       />
       <br></br>
       <Button
+        style={{
+          borderRadius: 35,
+          backgroundColor: "#21b6ae",
+          padding: "18px 36px",
+          fontSize: "18px",
+        }}
         variant="contained"
         type="submit"
-        color="secondary"
         className="button"
         onClick={handleSubmit}
       >

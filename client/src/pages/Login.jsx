@@ -44,7 +44,7 @@ const Login = () => {
       return responseContent;
     } catch (error) {
       console.log(error)
-      return false;
+      return;
     }
   };
 
@@ -68,9 +68,14 @@ const Login = () => {
         />
         <br></br>
         <Button
+        style={{
+          borderRadius: 35,
+          backgroundColor: "#21b6ae",
+          padding: "18px 36px",
+          fontSize: "18px",
+        }}
           variant="contained"
           type="submit"
-          color="secondary"
           onClick={handleSubmit}
         >
           Login

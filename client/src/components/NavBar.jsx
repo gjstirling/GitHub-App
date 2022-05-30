@@ -25,7 +25,7 @@ const ResponsiveAppBar = () => {
 
   const [user, setUser] = useUser();
 
-  const username = user?.name[0];
+  const username = user?.name?.[0];
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -44,8 +44,11 @@ const ResponsiveAppBar = () => {
 
   const logoutUser = () => {
     setUser(null);
+    localStorage.clear();
     handleCloseUserMenu();
   };
+
+  console.log(username)
 
   return (
     <AppBar position="static" style={{ background: "#A139E3" }}>

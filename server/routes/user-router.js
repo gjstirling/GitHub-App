@@ -39,7 +39,7 @@ router.post("/login", (req, res) => {
         // Create JWT Payload
         const payload = {
           id: user.id,
-          firstname: user.firstname,
+          firstname: user.firstName,
         };
         // Sign token
         jwt.sign(
@@ -51,7 +51,7 @@ router.post("/login", (req, res) => {
           (err, token) => {
             res.json({
               success: true,
-              token: "Bearer " + token,
+              token: token,
             });
           }
         );

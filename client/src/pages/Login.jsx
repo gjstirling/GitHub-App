@@ -1,24 +1,36 @@
 import { Button, TextField } from "@mui/material";
 import Form from "../components/form/Form";
 import { useState } from "react";
+import jwt_decode from "jwt-decode";
+import { useUser } from "../context/UserContext";
 
 const Login = () => {
-  const [user, setUser] = useState({
-    email: "test@gmail.com",
-    password: "Password123!"
-});
+  
+  const [login, setLogin] = useState({
+    email: "johndoe@gmail.com",
+    password: "Password123!",
+  });
+
+  const [, setUser] = useUser();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await checkUser(user);
+    const response = await checkLogin(login);
+    if (response.token === undefined){
+      alert("Email or password incorrect")
+      return;
+    }
+    window.localStorage.setItem("token", response.token);
+    const decodeToken = jwt_decode(response.token) 
+    setUser({'id': decodeToken.id, 'name': decodeToken.firstname});
   };
 
   const handleChange = async (event, key) => {
     event.preventDefault();
-    setUser({ ...user, [key]: event.target.value });
+    setLogin({ ...login, [key]: event.target.value });
   };
 
-  const checkUser = async (user) => {
+  const checkLogin = async (login) => {
     try {
       const rawResponse = await fetch("http://localhost:4000/api/user/login", {
         method: "POST",
@@ -26,13 +38,13 @@ const Login = () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(login),
       });
       const responseContent = await rawResponse.json();
-      // save token to local storage
-      console.log(responseContent);
+      return responseContent;
     } catch (error) {
-      console.log(error);
+      console.log(error)
+      return false;
     }
   };
 
@@ -41,7 +53,7 @@ const Login = () => {
       <Form>
         <h3>Email</h3>
         <TextField
-          value={user.email}
+          value={login.email}
           label=""
           variant="outlined"
           onChange={(event) => handleChange(event, "email")}
@@ -49,7 +61,7 @@ const Login = () => {
         <h3>Password</h3>
         <TextField
           type={"password"}
-          value={user.password}
+          value={login.password}
           label=""
           variant="outlined"
           onChange={(event) => handleChange(event, "password")}

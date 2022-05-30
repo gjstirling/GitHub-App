@@ -1,6 +1,8 @@
 import { Button, TextField } from "@mui/material";
 import Form from "../components/form/Form";
 import { useState } from "react";
+import checkInputs from "../services/validateUserData";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -10,19 +12,24 @@ const Register = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
-    console.log(inputs)
     event.preventDefault();
-    const response = await checkInputs(inputs)
-    console.log(response)
+    const result = checkInputs(inputs);
+    if (result) {
+      await createUser(inputs);
+      alert("Account created, click to ok to be redirected to the login page");
+      navigate("/login");
+    }
   };
 
   const handleChange = async (event, key) => {
     event.preventDefault();
     setInputs({ ...inputs, [key]: event.target.value });
-  }
+  };
 
-  const checkInputs = async (inputs) => {
+  const createUser = async (inputs) => {
     try {
       const rawResponse = await fetch("http://localhost:4000/api/user", {
         method: "POST",
@@ -35,23 +42,40 @@ const Register = () => {
       const responseContent = await rawResponse.json();
       return responseContent;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return error;
     }
-  }
+  };
 
   return (
     <div className="registration">
       <Form>
         <h1> Sign up here !</h1>
         <h3>First name</h3>
-        <TextField label="" variant="outlined" onChange={(event) => handleChange(event, "firstName")}/>
+        <TextField
+          label=""
+          variant="outlined"
+          onChange={(event) => handleChange(event, "firstName")}
+        />
         <h3>Last name</h3>
-        <TextField label="" variant="outlined" onChange={(event) => handleChange(event, "lastName")}/>
+        <TextField
+          label=""
+          variant="outlined"
+          onChange={(event) => handleChange(event, "lastName")}
+        />
         <h3>Email </h3>
-        <TextField label="" variant="outlined" onChange={(event) => handleChange(event, "email")}/>
+        <TextField
+          label=""
+          variant="outlined"
+          onChange={(event) => handleChange(event, "email")}
+        />
         <h3>Password</h3>
-        <TextField label="" variant="outlined" onChange={(event) => handleChange(event, "password")}/>
+        <TextField
+          label=""
+          variant="outlined"
+          type={"password"}
+          onChange={(event) => handleChange(event, "password")}
+        />
         <br></br>
         <Button
           variant="contained"

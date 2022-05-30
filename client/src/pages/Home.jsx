@@ -1,3 +1,5 @@
+import style from './home.css'
+
 const Home = () => {
     return (
       <div className="landing-page">

@@ -6,6 +6,7 @@ import { useUser } from "../context/UserContext";
 
 const Login = () => {
   
+  // Set to empty strings if not needed (test user account)
   const [login, setLogin] = useState({
     email: "johndoe@gmail.com",
     password: "Password123!",

@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Guess from "../pages/Search";
+import Search from "../pages/Search";
 import Home from "../pages/Home";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import UserCheck from "./UserCheck";
+import Register from "../pages/Register";
 
 export function AppRouter() {
 
@@ -29,10 +30,16 @@ export function AppRouter() {
             }
           ></Route>
           <Route
+            path="/register"
+            element={
+                <Register />
+            }
+          ></Route>
+          <Route
             path="/search"
             element={
               <ProtectedRoute>
-                <Guess />
+                <Search />
               </ProtectedRoute>
             }
           ></Route>

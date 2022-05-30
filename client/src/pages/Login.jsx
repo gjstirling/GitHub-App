@@ -1,9 +1,21 @@
+import { Button, TextField } from "@mui/material";
+import Form from '../components/form/Form' 
+
 const Login = () => {
     
     return (
       <div className="landing">
-        <h1> Login Page </h1>
-        
+      <Form>
+    <h1> Login </h1>
+      <h3>Email</h3>
+      <TextField label="" variant="outlined" />
+      <h3>Password</h3>
+      <TextField label="" variant="outlined" />
+      <br></br>
+      <Button variant="contained" type="submit" color="secondary">
+        Login
+      </Button>
+    </Form>
       </div>
     );
   };

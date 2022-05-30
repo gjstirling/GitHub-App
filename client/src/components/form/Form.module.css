@@ -1,0 +1,6 @@
+.form {
+    background-color: rgb(113, 225, 240);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}

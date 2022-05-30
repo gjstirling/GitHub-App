@@ -24,7 +24,7 @@ router.post("/", validateUser, (req, res) => {
   });
 });
 
-router.get("/login", (req, res) => {
+router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   User.findOne({ email }).then((user) => {

@@ -17,3 +17,7 @@ To launch the application make sure you are in the server directory and run the 
 
 ```npm run dev``` 
 
+## Feature GitHub Search 
+
+Click on GitHub search tag to let the ai take a guess on a github user's favourite programming language ! 
+

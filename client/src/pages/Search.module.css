@@ -20,11 +20,12 @@
   margin: auto;
   width: 20%;
   position: relative;
+  padding: 10px;
 }
 
 .button {
   position: relative;
   margin: auto;
   width: 20%;
-  padding: 10px;
+  padding:10px;
 }

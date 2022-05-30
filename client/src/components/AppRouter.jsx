@@ -1,15 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Guess from "./components/Guess";
-import Home from "./components/Home";
-import NavBar from "./components/NavBar";
-import Login from "./components/Login";
-import ProtectedRoute from "./components/ProtectedRoute";
-import UserCheck from "./components/UserCheck";
+import Guess from "../pages/Search";
+import Home from "../pages/Home";
+import NavBar from "./NavBar";
+import Login from "../pages/Login";
+import ProtectedRoute from "./ProtectedRoute";
+import UserCheck from "./UserCheck";
 
-export function MyApp() {
+export function AppRouter() {
 
   return (
-    <div id="app">
       <Router>
         <NavBar />
         <Routes>
@@ -22,7 +21,7 @@ export function MyApp() {
             }
           ></Route>
           <Route
-            path="/Login"
+            path="/login"
             element={
               <UserCheck>
                 <Login />
@@ -30,7 +29,7 @@ export function MyApp() {
             }
           ></Route>
           <Route
-            path="/guess"
+            path="/search"
             element={
               <ProtectedRoute>
                 <Guess />
@@ -39,6 +38,5 @@ export function MyApp() {
           ></Route>
         </Routes>
       </Router>
-    </div>
   );
 }

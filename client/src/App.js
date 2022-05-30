@@ -1,11 +1,10 @@
-import "./App.css";
 import { UserContextProvider } from "./context/UserContext";
-import { MyApp } from "./MyApp";
+import { AppRouter } from "./components/AppRouter";
 
 function App() {
   return (
     <UserContextProvider>
-      <MyApp />
+      <AppRouter />
     </UserContextProvider>
   );
 }

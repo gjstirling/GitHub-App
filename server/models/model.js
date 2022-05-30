@@ -17,7 +17,5 @@ async function getRepos(user) {
 
 const repos = await getRepos("gjstirling");
 for (const repo of repos) {
-  console.log(repo.name);
-  console.log(repo.size);
   console.log(repo.language + "\n");
 }

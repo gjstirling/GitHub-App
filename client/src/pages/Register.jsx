@@ -3,6 +3,7 @@ import Form from "../components/form/Form";
 import { useState } from "react";
 import checkInputs from "../services/validateUserData";
 import { useNavigate } from "react-router-dom";
+import style from "./css/Register.module.css";
 
 const Register = () => {
   const [inputs, setInputs] = useState({
@@ -80,12 +81,7 @@ const Register = () => {
         <Button
           variant="contained"
           type="submit"
-          style={{
-            borderRadius: 35,
-            backgroundColor: "#21b6ae",
-            padding: "18px 36px",
-            fontSize: "18px",
-          }}
+          className={style.button}
           onClick={handleSubmit}
         >
           Sign up

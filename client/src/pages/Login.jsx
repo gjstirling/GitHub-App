@@ -3,6 +3,7 @@ import Form from "../components/form/Form";
 import { useState } from "react";
 import jwt_decode from "jwt-decode";
 import { useUser } from "../context/UserContext";
+import style from './css/Login.module.css'
 
 const Login = () => {
   
@@ -69,12 +70,7 @@ const Login = () => {
         />
         <br></br>
         <Button
-        style={{
-          borderRadius: 35,
-          backgroundColor: "#21b6ae",
-          padding: "18px 36px",
-          fontSize: "18px",
-        }}
+          className={style.button}
           variant="contained"
           type="submit"
           onClick={handleSubmit}

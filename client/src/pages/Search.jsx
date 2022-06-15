@@ -1,5 +1,5 @@
 import { Button, TextField } from "@mui/material";
-import style from "./Search.module.css";
+import style from "./css/Search.module.css";
 import { useSearchForm } from "../hooks/useSearchForm";
 
 const Search = () => {
@@ -18,15 +18,9 @@ const Search = () => {
       />
       <br></br>
       <Button
-        style={{
-          borderRadius: 35,
-          backgroundColor: "#21b6ae",
-          padding: "18px 36px",
-          fontSize: "18px",
-        }}
         variant="contained"
         type="submit"
-        className="button"
+        className={style.button}
         onClick={handleSubmit}
       >
         Make guess

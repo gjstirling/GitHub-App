@@ -21,3 +21,11 @@ To launch the application make sure you are in the server directory and run the 
 
 Click on GitHub search tag to let the ai take a guess on a github user's favourite programming language ! 
 
+## Todo 
+
+Develop unit tests
+Add more details to README (instructions for use MONGO DB atlas)
+Refactor findFavouriteLanguage function
+
+
+
